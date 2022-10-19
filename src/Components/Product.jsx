@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/UserContext';
 
 const Product = () => {
+    const {user} = useContext(AuthContext)
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -9,7 +11,7 @@ const Product = () => {
                     <h2 className="card-title">Shoes!</h2>
                     <p>If a dog chews shoes whose shoes does he choose?</p>
                     <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button className="btn btn-primary">Buy Now {user?.displayName}</button>
                     </div>
                 </div>
             </div>
