@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/UserContext';
 
 const Navber = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {user,logOut} = useContext(AuthContext)
+
+    
     return (
         <div>
              <div className="bg-gray-900">
@@ -66,7 +70,25 @@ const Navber = () => {
             </li>
           </ul>
           <ul className="flex items-center hidden space-x-8 lg:flex">
-            <li>
+           {
+            user?.email && <Link className='bg-orange-500 p-4 rounded-xl' >{user.email}</Link>
+           }
+          
+          {
+            user?.uid ?
+            <li onClick={logOut}>
+            <Link
+
+              className="bg-orange-500 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-orange-700 focus:shadow-outline focus:outline-none"
+              aria-label="Sign up"
+              title="Sign up"
+            >
+              Sign out
+            </Link>
+          </li>
+          :
+          <>
+          <li>
               <Link
                 to="/signup"
                 className="bg-orange-500 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-orange-700 focus:shadow-outline focus:outline-none"
@@ -86,6 +108,11 @@ const Navber = () => {
                 Sign in
               </Link>
             </li>
+
+
+          </>
+          }
+            
           </ul>
           <div className="lg:hidden">
             <button

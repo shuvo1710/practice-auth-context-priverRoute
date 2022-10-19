@@ -3,10 +3,11 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './layout/Main';
 import Home from './Components/Home';
-import About from './Components/About';
-import Product from './Components/Product';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import PrivetRoute from './PrivetRoute/PrivetRoute';
+import About from './Components/About';
+import Product from './Components/Product';
 
 
 function App() {
@@ -20,11 +21,11 @@ function App() {
       },
       {
         path:'about',
-        element:<About></About>
+        element:<PrivetRoute><About></About> </PrivetRoute>
       },
       {
         path:'product',
-        element:<Product></Product>
+        element:<PrivetRoute> <Product></Product></PrivetRoute>
       },
       {
         path:'signin',

@@ -19,14 +19,15 @@ const Register = () => {
             const user = result.user;
             console.log(user)
             toast.success('successfully register', {autoClose:500})
+            form.reset()
         })
         .catch(error=>{
             console.error('error', error)
             setError(error.message)
 
-        })
-        
+        })       
     }
+    
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
